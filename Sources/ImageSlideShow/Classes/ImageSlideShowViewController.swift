@@ -39,7 +39,7 @@ open class ImageSlideShowViewController: UIPageViewController, UIPageViewControl
 	open var dismissOnPanGesture:Bool = false
 	open var enableZoom:Bool = false
 	open var statusBarStyle:UIStatusBarStyle = .lightContent
-	open var navigationBarTintColor:UIColor = .white
+	open var navigationBarTintColor:UIColor = .black
 	
 	open var controllerDidDismiss:() -> Void = {}
 	open var stepAnimate:((_ offset:CGFloat, _ viewController:UIViewController) -> Void) = { _,_ in }
@@ -123,7 +123,7 @@ open class ImageSlideShowViewController: UIPageViewController, UIPageViewControl
 		hidesBottomBarWhenPushed = true
 		
 		navigationController?.navigationBar.tintColor = navigationBarTintColor
-		navigationController?.view.backgroundColor = .black
+		navigationController?.view.backgroundColor = .white
 		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismiss(sender:)))
 		
 		//	Manage Gestures
