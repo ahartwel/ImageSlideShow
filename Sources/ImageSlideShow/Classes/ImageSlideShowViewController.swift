@@ -198,28 +198,14 @@ open class ImageSlideShowViewController: UIPageViewController, UIPageViewControl
 		}
 	}
 	
-	func setNavigationBar(visible:Bool)
-	{
-		navigationBarHidden = !visible
-		
-		UIView.animate(withDuration: 0.23,
-		                           delay: 0.0,
-		                           options: .beginFromCurrentState,
-		                           animations: { () -> Void in
-									
-									self.navigationController?.navigationBar.alpha = (visible ? 1.0 : 0.0)
-									
-			}, completion: nil)
-		
-		self.setNeedsStatusBarAppearanceUpdate()
-	}
+	
 	
 	// MARK: UIPageViewControllerDataSource
 	
 	public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController])
 	{
-		self.setNavigationBar(visible: false)
-	}
+
+    }
 	
 	public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool)
 	{
@@ -304,7 +290,6 @@ open class ImageSlideShowViewController: UIPageViewController, UIPageViewControl
 				controller.slide = slide
 				controller.enableZoom = enableZoom
 				controller.willBeginZoom = {
-					self.setNavigationBar(visible: false)
 				}
 				
 				slidesViewControllerCache.setObject(controller, forKey: slide.slideIdentifier() as AnyObject)
@@ -394,8 +379,8 @@ open class ImageSlideShowViewController: UIPageViewController, UIPageViewControl
 	
 	@objc fileprivate func tapGesture(gesture:UITapGestureRecognizer)
 	{
-		setNavigationBar(visible: navigationBarHidden == true);
-	}
+
+    }
 	
 	@objc fileprivate func panGesture(gesture:UIPanGestureRecognizer)
 	{
@@ -452,7 +437,6 @@ open class ImageSlideShowViewController: UIPageViewController, UIPageViewControl
 				                           options: .beginFromCurrentState,
 				                           animations: { () -> Void in
 											
-											self.navigationBarHidden = true
 											self.navigationController?.navigationBar.alpha = 0.0
 											self.navigationController?.view.backgroundColor = .black
 											
